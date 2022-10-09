@@ -1,35 +1,44 @@
-import { Text, View, FlatList, StatusBar, TouchableOpacity } from 'react-native';
-import { Produto } from '../../componentes/Produto';
-import { ProdutosContext } from '../../contexts/ProdutosContext';
-import { AutenticacaoContext } from '../../contexts/AutenticacaoContext';
-import { TemaContext } from '../../contexts/TemaContext';
-import { estilos } from './estilos';
 import { useContext } from 'react';
-import { Feather } from 'react-native-vector-icons'
+import { Text, View, FlatList, StatusBar, TouchableOpacity } from 'react-native';
+import { estilos } from './estilos';
+
+import { TemaContext } from '../../contexts/TemaContext';
+import { AutenticacaoContext } from '../../contexts/AutenticacaoContext';
+import { ProdutosContext } from '../../contexts/ProdutosContext';
+
+
 import { produtos } from './produtos';
+import { Produto } from '../../componentes/Produto';
+
+
 import MaterialCommunityIcons from 'react-native-vector-icons/Feather';
+import { Feather } from 'react-native-vector-icons'
+
 
 export default function Principal({navigation}) {
-  const {
-    quantidade,
-    ultimosVistos,
-  } = useContext(ProdutosContext);
+  
+    const estilo = estilos(temas);
 
   const {
     temas,
   } = useContext(TemaContext);
 
-  const {
-    usuario
-  } = useContext(AutenticacaoContext);
+  
+    const {
+      usuario
+    } = useContext(AutenticacaoContext);
 
-  const estilo = estilos(temas);
+  const {
+  quantidade,
+    ultimosVistos,
+  } = useContext(ProdutosContext);
+
 
   return (
     <View style={estilo.container}>
       <StatusBar />
       <View style={estilo.tituloArea}>
-        <Text style={estilo.titulo}>Olá, {usuario.nome}</Text>
+        <Text style={estilo.titulo}>Olá, {usuario?.nome}</Text>
         <View style={estilo.carrinhoArea}>
           <TouchableOpacity onPress={() => navigation.navigate('Resumo')}>
             <Feather name="shopping-cart" size={30} color="#fff" style={estilo.carrinhoIcon} />

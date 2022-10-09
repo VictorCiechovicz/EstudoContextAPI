@@ -1,5 +1,5 @@
-import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { useContext } from 'react';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { ProdutosContext } from '../../contexts/ProdutosContext';
 import { estilos } from './estilos'
 
