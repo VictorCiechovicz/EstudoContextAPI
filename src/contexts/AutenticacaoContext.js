@@ -1,35 +1,31 @@
-import { createContext,useState } from "react";
+import { createContext, useState } from "react";
 
-export const AutenticacaoContext=createContext({ })
+export const AutenticacaoContext = createContext({});
 
-export function AutenticacaoProvider({children}){
-const [usuario, setUsuario]= useState({})
+export function AutenticacaoProvider({ children }) {
+    const [usuario, setUsuario] = useState(null);
 
-function login(email,senha){
-  if(email=='victor09avila@hotmail.com' && senha=='123'){
-setUsuario({
-  nome:'Victor',
-  email: email,
-  endereco:'Rua Otto rehn 564',
-  telefone:'991528230'
-})
+    async function login(email, senha){
+      if(email === 'andre@email.com' && senha === '123'){
+          setUsuario({
+              nome: 'André',
+              email: email,
+              telefone: '+55 (11) 99999-9999',
+              endereco: 'Rua dos Bacanas, 10',
+          });
+          return 'ok';
+      }
+      return 'Email ou senha incorretos';
+    }
 
-return 'ok' 
-  }else{
-    return 'Email ou senha invalidos'
-  }
-}
-  
-
-  return(
-
-    <AutenticacaoContext.Provider value={{
-   usuario,
-   login,
-
-
-    }}>
-      {children}
-    </AutenticacaoContext.Provider>
-  )
+    return (
+        <AutenticacaoContext.Provider
+            value={{
+                usuario,
+                login,
+            }}
+        >
+            {children}
+        </AutenticacaoContext.Provider>
+    );
 }

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Text, View, TextInput, TouchableOpacity, StatusBar, Alert } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 import { AutenticacaoContext } from "../../contexts/AutenticacaoContext";
 import { TemaContext } from "../../contexts/TemaContext";
 import { estilos } from './estilos';
@@ -24,7 +24,7 @@ export default function Login({ navigation }) {
       navigation.navigate('Principal');
     }
     else{
-     Alert.alert(resultado);
+      alert(resultado);
     }
   }
 
